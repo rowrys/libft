@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 14:55:05 by mcolin            #+#    #+#             */
-/*   Updated: 2026/01/04 12:18:04 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/04/12 15:36:00 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,6 @@ long	ft_atol(const char *nptr);
 void	ft_safe_close(int fd);
 char	*ft_strcpy(char *dst, const char *src);
 int		ft_strcmp(const char *s1, const char *s2);
+char	*ft_itoa_buffer(int n, char *buffer, size_t buffer_size);
 
 #endif

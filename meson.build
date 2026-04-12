@@ -13,6 +13,7 @@ sources = files (
 	'srcs/stdlib/ft_calloc.c',
 	'srcs/stdlib/ft_split.c',
 	'srcs/stdlib/ft_itoa.c',
+	'srcs/stdlib/ft_itoa_buffer.c',
 	'srcs/stdlib/ft_atol.c',
 	'srcs/stdlib/ft_safe_close.c',
 	'srcs/stdlib/gnl/get_next_line.c',

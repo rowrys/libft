@@ -6,7 +6,7 @@
 #    By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/13 12:02:16 by mcolin            #+#    #+#              #
-#    Updated: 2026/04/09 14:22:39 by mcolin           ###   ########.fr        #
+#    Updated: 2026/04/12 15:54:30 by mcolin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SOURCES :=	$(SRCS_DIR)stdlib/ft_atoi.c					\
 			$(SRCS_DIR)stdlib/ft_calloc.c				\
 			$(SRCS_DIR)stdlib/ft_split.c				\
 			$(SRCS_DIR)stdlib/ft_itoa.c					\
+			$(SRCS_DIR)stdlib/ft_itoa_buffer.c			\
 			$(SRCS_DIR)stdlib/ft_atol.c					\
 			$(SRCS_DIR)stdlib/ft_safe_close.c			\
 			$(SRCS_DIR)stdlib/gnl/get_next_line.c		\
