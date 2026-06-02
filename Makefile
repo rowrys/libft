@@ -14,6 +14,7 @@ CC := cc
 SRCS_DIR := srcs/
 NAME := libft.a
 SOURCES :=	$(SRCS_DIR)stdlib/ft_atoi.c					\
+			$(SRCS_DIR)stdlib/ft_atoi_base.c			\
 			$(SRCS_DIR)stdlib/ft_calloc.c				\
 			$(SRCS_DIR)stdlib/ft_split.c				\
 			$(SRCS_DIR)stdlib/ft_itoa.c					\

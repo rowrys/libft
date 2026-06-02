@@ -10,6 +10,7 @@ project (
 
 sources = files (
 	'srcs/stdlib/ft_atoi.c',
+	'srcs/stdlib/ft_atoi_base.c',
 	'srcs/stdlib/ft_calloc.c',
 	'srcs/stdlib/ft_split.c',
 	'srcs/stdlib/ft_itoa.c',

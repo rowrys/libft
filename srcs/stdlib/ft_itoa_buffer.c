@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stddef.h>
 
 static unsigned char	get_itoa_len(int nb)
 {
@@ -32,7 +33,7 @@ char	*ft_itoa_buffer(int n, char *buffer, size_t buffer_size)
 	unsigned char	i;
 
 	i = get_itoa_len(n);
-	if (!buffer || i + 1 >= buffer_size)
+	if (!buffer || (size_t)i + 1 >= buffer_size)
 		return (NULL);
 	if (!n)
 		return (ft_strcpy(buffer, "0"));

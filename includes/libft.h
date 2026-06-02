@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdbool.h>
 
 typedef struct s_list
 {
@@ -82,5 +83,6 @@ void	ft_safe_close(int fd);
 char	*ft_strcpy(char *dst, const char *src);
 int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_itoa_buffer(int n, char *buffer, size_t buffer_size);
+int		ft_atoi_base(char const *str, char const *base, bool *of_flag);
 
 #endif
