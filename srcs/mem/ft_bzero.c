@@ -14,5 +14,18 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	ft_memset(s, 0, n);
+	size_t	iter;
+	size_t	new_addrs;
+
+	iter = 0;
+	while (((size_t)s + iter) & (sizeof(size_t) - 1) && iter < n)
+		((char *)s)[iter++] = 0;
+	while (iter + sizeof(size_t) - 1 < n)
+	{
+		new_addrs = (size_t)s + iter;
+		*((size_t *)new_addrs) = 0;
+		iter += sizeof(size_t);
+	}
+	while (iter < n)
+		((char *)s)[iter++] = 0;
 }
