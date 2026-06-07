@@ -17,6 +17,7 @@ sources = files (
 	'srcs/stdlib/ft_itoa_buffer.c',
 	'srcs/stdlib/ft_atol.c',
 	'srcs/stdlib/ft_safe_close.c',
+	'srcs/stdlib/ft_vecb.c',
 	'srcs/stdlib/gnl/get_next_line.c',
 	'srcs/stdlib/gnl/get_number_line_file.c',
 	'srcs/ctype/ft_isalnum.c',

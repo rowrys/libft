@@ -85,4 +85,9 @@ int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_itoa_buffer(int n, char *buffer, size_t buffer_size);
 int		ft_atoi_base(char const *str, char const *base, bool *of_flag);
 
+// vecb
+void	*vecb(size_t size);
+void	vecb_set(void *vecb, size_t pos, unsigned char state);
+bool	vecb_get(void *vecb, size_t pos);
+
 #endif
