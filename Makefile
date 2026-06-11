@@ -77,7 +77,7 @@ OBJS := $(SOURCES:$(SRCS_DIR)%.c=$(OBJ_DIR)%.o)
 
 DEPS := $(SOURCES:$(SRCS_DIR)%.c=$(OBJ_DIR)%.d)
 
-CFLAGS := -MP -MMD -Wall -Werror -Wextra -g -I includes/
+CFLAGS := -MP -MMD -Wall -Werror -Wextra -std=c11 -g -I includes/
 
 all: $(NAME)
 
