@@ -10,28 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "internal_ft_printf.h"
+
 #include <stdarg.h>
-#include "ft_printf.h"
+#include <stdint.h>
 
-static int	get_format(int fd, const char fmt, va_list va, int *count)
+#define HEX_MAJ "0123456789ABCDEF"
+#define HEX_MIN "0123456789abcdef"
+
+static void	get_format(int fd, const char fmt, va_list *va, int *count)
 {
-	const char	hex_maj[] = "0123456789ABCDEF";
-	const char	hex_min[] = "0123456789abcdef";
-
 	if (fmt == 'd' || fmt == 'i')
-		ft_printf_putnbr(fd, va_arg(va, int), count);
+		ft_printf_putnbr(fd, va_arg(*va, int), count);
 	else if (fmt == 's')
-		ft_printf_putstr(fd, va_arg(va, const char *), count);
+		ft_printf_putstr(fd, va_arg(*va, const char *), count);
 	else if (fmt == 'c')
-		ft_printf_putchar(fd, (unsigned char)va_arg(va, int), count);
+		ft_printf_putchar(fd, (unsigned char)va_arg(*va, int), count);
 	else if (fmt == 'u')
-		ft_printf_putunbr(fd, va_arg(va, unsigned int), count, "0123456789");
+		ft_printf_putunbr(fd, va_arg(*va, unsigned int), count, "0123456789");
 	else if (fmt == 'x')
-		ft_printf_putunbr(fd, va_arg(va, unsigned int), count, hex_min);
+		ft_printf_putunbr(fd, va_arg(*va, unsigned int), count, HEX_MIN);
 	else if (fmt == 'X')
-		ft_printf_putunbr(fd, va_arg(va, unsigned int), count, hex_maj);
+		ft_printf_putunbr(fd, va_arg(*va, unsigned int), count, HEX_MAJ);
 	else if (fmt == 'p')
-		ft_printf_putaddr(fd, va_arg(va, unsigned long long), count, hex_min);
+		ft_printf_putaddr(fd, (uintptr_t)va_arg(*va, void *), count, HEX_MIN);
 	else if (fmt == '%')
 		ft_printf_putchar(fd, '%', count);
 	else
@@ -39,10 +41,9 @@ static int	get_format(int fd, const char fmt, va_list va, int *count)
 		ft_printf_putchar(fd, '%', count);
 		ft_printf_putchar(fd, fmt, count);
 	}
-	return (2);
 }
 
-static int	print_str(int fd, const char *fmt, size_t *i, size_t *j)
+static inline int	print_str(int fd, const char *fmt, size_t *i, size_t *j)
 {
 	int		count;
 
@@ -54,58 +55,51 @@ static int	print_str(int fd, const char *fmt, size_t *i, size_t *j)
 	return (count);
 }
 
-int	ft_printf(const char *fmt, ...)
+static int	ft_printf_base(int fd, const char *fmt, va_list *va)
 {
-	va_list	va;
 	size_t	i;
 	size_t	j;
 	int		count;
 
 	if (!fmt)
 		return (-1);
-	va_start(va, fmt);
 	i = 0;
 	j = 0;
 	count = 0;
 	while (fmt[i])
 	{
-		if (fmt[i] == '\n' || fmt[i] == '%')
-			count += print_str(1, fmt, &i, &j);
 		if (fmt[i] == '%')
-			i += get_format(1, fmt[i + 1], va, &count);
+		{
+			count += print_str(fd, fmt, &i, &j);
+			get_format(fd, fmt[i + 1], va, &count);
+			i += 2;
+		}
 		else
 			i++;
 	}
 	if (i != j)
-		count += print_str(1, fmt, &i, &j);
-	va_end(va);
+		count += print_str(fd, fmt, &i, &j);
 	return (count);
 }
 
 int	ft_printfd(int fd, const char *fmt, ...)
 {
 	va_list	va;
-	size_t	i;
-	size_t	j;
 	int		count;
 
-	if (!fmt)
-		return (-1);
 	va_start(va, fmt);
-	i = 0;
-	j = 0;
-	count = 0;
-	while (fmt[i])
-	{
-		if (fmt[i] == '\n' || fmt[i] == '%')
-			count += print_str(fd, fmt, &i, &j);
-		if (fmt[i] == '%')
-			i += get_format(fd, fmt[i + 1], va, &count);
-		else
-			i++;
-	}
-	if (i != j)
-		count += print_str(fd, fmt, &i, &j);
+	count = ft_printf_base(fd, fmt, &va);
+	va_end(va);
+	return (count);
+}
+
+int	ft_printf(const char *fmt, ...)
+{
+	va_list	va;
+	int		count;
+
+	va_start(va, fmt);
+	count = ft_printf_base(1, fmt, &va);
 	va_end(va);
 	return (count);
 }

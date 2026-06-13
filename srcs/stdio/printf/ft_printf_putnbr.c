@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
+#include "stdint.h"
 
 void	ft_printf_putnbr(int fd, int n, int *count)
 {
@@ -53,8 +54,7 @@ void	ft_printf_putunbr(int fd, unsigned int n, int *count, const char *base)
 	}
 }
 
-void	ft_printf_putaddr(int fd, unsigned long long n, int *count,
-						const char	*base)
+void	ft_printf_putaddr(int fd, uintptr_t n, int *count, const char *base)
 {
 	if (!n)
 	{
