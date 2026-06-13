@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 14:55:05 by mcolin            #+#    #+#             */
-/*   Updated: 2026/04/12 15:36:00 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/06/13 11:40:30 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,6 @@ int		ft_atoi_base(char const *str, char const *base, bool *of_flag);
 void	*vecb(size_t size);
 void	vecb_set(void *vecb, size_t pos, unsigned char state);
 bool	vecb_get(void *vecb, size_t pos);
+size_t	new_vecb_size(size_t size);
 
 #endif
