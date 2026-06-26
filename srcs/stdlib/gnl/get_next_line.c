@@ -102,11 +102,7 @@ char	*get_next_line(int fd, char *charset)
 	char			*result;
 
 	if ((fd < 0 || fd > 1023) || BUFFER_SIZE <= 0)
-	{
-		free(buffer[fd]);
-		buffer[fd] = NULL;
 		return (NULL);
-	}
 	buffer[fd] = read_buffer(fd, buffer[fd], charset);
 	if (!buffer[fd])
 		return (NULL);

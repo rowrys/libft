@@ -4,8 +4,16 @@ project (
 	version : '0.1.0',
 	default_options : [
 		'warning_level=3',
-		'optimization=3'
+		'optimization=3',
+		'c_std=c11',
+		'werror=true',
+		'debug=true',
 	]
+)
+
+add_project_arguments(
+	'-pedantic-errors',
+	language : 'c'
 )
 
 sources = files (
