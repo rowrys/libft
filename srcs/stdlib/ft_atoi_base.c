@@ -32,7 +32,7 @@ static bool	init_buffer(unsigned char *buffer, unsigned char const *base)
 	{
 		if (buffer[(int)base[i]] != 0 || is_invalid_char(base[i]))
 			return (1);
-		buffer[(int)base[i]] = i;
+		buffer[(int)base[i]] = i + 1;
 		++i;
 	}
 	return (0);
@@ -70,11 +70,11 @@ int	ft_atoi_base(char const *str, char const *base, bool *of_flag)
 	while (str[i])
 	{
 		if (!buffer[(int)(unsigned char)str[i]])
-			return (result * sign);
+			return (0);
 		if (of_flag && result > (int)(result * base_len)
 			+ buffer[(int)(unsigned char)str[i]])
 			*of_flag = 1;
-		result = (result * base_len) + buffer[(int)(unsigned char)str[i++]];
+		result = (result * base_len) + (buffer[(int)(unsigned char)str[i++]] - 1);
 	}
 	return (result * sign);
 }
